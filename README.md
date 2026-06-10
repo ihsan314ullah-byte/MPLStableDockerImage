@@ -80,9 +80,41 @@ The player automatically switches between available bitrates based on network co
 
 6 directories, 8 files
 
+streaming-demo/
+├── input/
+│ └── tempest_input.mp4
+├── logs/
+│ ├── ffmpeg.log
+│ └── ffmpeg.pid
+├── scripts/
+│ ├── start_ffmpeg.sh
+│ ├── stop_ffmpeg.sh
+│ └── status.sh
+└── README.md
+
 ---
 
 ## Running the Project
+
+# For seemless execution on a fresh EC2 via ssh
+sudo apt update
+sudo apt install git ffmpeg tree -y
+
+git clone https://github.com/ihsan314ullah-byte/Live-Streaming-Media-Pipeline
+
+cd Live-Streaming-Media-Pipeline
+
+mv Live-Streaming-Media-Pipeline ~/streaming-demo
+
+cd ~/streaming-demo
+
+tree -L 3
+
+make sure the ~/streaming-demo/logs exist, if not you will get errors in starting/stoping ffmpeg script
+and then make 
+mkdir -p logs
+
+ensure scripts are executiable via chmod +x scripts/*.sh
 
 ### Start Streaming
 
