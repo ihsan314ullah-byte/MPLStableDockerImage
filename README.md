@@ -24,7 +24,7 @@ FFmpeg runs on an Ubuntu EC2 instance and continuously loops a local MP4 file.
 Responsibilities:
 
 * Read source video
-* Stream via SRT
+* Stream via SRT-Caller mode
 * Send MPEG-TS transport stream to AWS MediaConnect
 
 ### AWS MediaConnect
@@ -33,7 +33,7 @@ Acts as the SRT ingest endpoint.
 
 Responsibilities:
 
-* Receive SRT stream
+* Receive SRT stream via SRT Listener mode
 * Forward stream to MediaLive
 
 ### AWS MediaLive
@@ -63,28 +63,8 @@ The player automatically switches between available bitrates based on network co
 
 ---
 
-## Directory Structure
+## PROJECT DIRECTORY STRUCTURE
 
-└── streaming-demo ├── api │   ├── Dockerfile │   ├── api.py │   └── requirements.txt ├── input │   └── tempest_input.mp4 ├── logs │   └── ffmpeg.log └── scripts ├── start_ffmpeg.sh ├── status.sh └── stop_ffmpeg.sh
-6 directories, 8 files
-
-streaming-demo/
-├── input/
-│ └── tempest_input.mp4
-├── logs/
-│ ├── ffmpeg.log
-│ └── ffmpeg.pid
-├── scripts/
-│ ├── start_ffmpeg.sh
-│ ├── stop_ffmpeg.sh
-│ └── status.sh
-└── README.md
- 
----
-
-PROJECT DIRECTORY STRUCTURE
-
-```
 streaming-demo/
 ├── README.md
 ├── api/
@@ -94,8 +74,8 @@ streaming-demo/
 ├── input/
 |   ├── tempest_input.mp4
 ├── logs/
-|   ├──
-|   ├──
+|   ├── ffmpeg.log
+|   ├── ffmpeg.pid
 └── scripts/
     ├── start_ffmpeg.sh
     ├── stop_ffmpeg.sh
